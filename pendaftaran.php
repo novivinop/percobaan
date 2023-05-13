@@ -44,31 +44,31 @@ session_start();
                         <!-- awal form -->
                         <form>
                             <div class="mb-3 row">
-                                <label for="staticEmail" class="col-sm-4 col-form-label">Masukkan Nama<span class="text-danger">*</span></label>
+                                <label for="inputName" class="col-sm-4 col-form-label">Masukkan Nama<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="inputNama">
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputPassword" class="col-sm-4 col-form-label">NIM<span class="text-danger">*</span></label>
+                                <label for="inputNIM" class="col-sm-4 col-form-label">NIM<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="inputNIM">
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputPassword" class="col-sm-4 col-form-label">Masukkan Email<span class="text-danger">*</span></label>
+                                <label for="inputEmail" class="col-sm-4 col-form-label">Masukkan Email<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputPassword">
+                                    <input type="text" class="form-control" id="inputEmail">
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputPassword" class="col-sm-4 col-form-label">Nomor HP<span class="text-danger">*</span></label>
+                                <label for="inputNomor" class="col-sm-4 col-form-label">Nomor HP<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputPassword">
+                                    <input type="text" class="form-control" id="inputNomor">
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputPassword" class="col-sm-4 col-form-label">Semester Saat Ini<span class="text-danger">*</span></label>
+                                <label for="inputSemester" class="col-sm-4 col-form-label">Semester Saat Ini<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <select class="form-select form-select-lg-sm" aria-label=".form-select-lg example">
                                         <option value="1" disabled selected>-- Pilih Semester--</option>
@@ -79,13 +79,13 @@ session_start();
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputPassword" class="col-sm-4 col-form-label">IPK Terakhir<span class="text-danger">*</span></label>
+                                <label for="inputIPK" class="col-sm-4 col-form-label">IPK Terakhir<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputPassword">
+                                    <input type="text" class="form-control" id="inputIPK">
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputPassword" class="col-sm-4 col-form-label">Pilihan Beasiswa<span class="text-danger">*</span></label>
+                                <label for="inputPilihan" class="col-sm-4 col-form-label">Pilihan Beasiswa<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <select class="form-select form-select-lg-sm" aria-label=".form-select-lg example">
                                         <option value="1" disabled selected>-- Pilih Beasiswa--</option>
@@ -95,7 +95,7 @@ session_start();
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputPassword" class="col-sm-4 col-form-label">Upload Berkas<span class="text-danger">*</span></label>
+                                <label for="inputBerkas" class="col-sm-4 col-form-label">Upload Berkas<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
                                     <input class="form-control" type="file" id="formFile">
                                 </div>
