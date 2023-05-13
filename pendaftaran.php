@@ -42,60 +42,61 @@ session_start();
                     </div>
                     <div class="card-body">
                         <!-- awal form -->
-                        <form>
+                        <form action="proses_pendaftaran.php" method="POST" enctype="multipart/form-data">
                             <div class="mb-3 row">
                                 <label for="nama" class="col-sm-4 col-form-label">Masukkan Nama<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="nama" class="form-control" id="nama">
+                                    <input type="text" name="nama" class="form-control" id="nama" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="nim" class="col-sm-4 col-form-label">NIM<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="nim" class="form-control" id="nim">
+                                    <input type="text" name="nim" class="form-control" id="nim" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="email" class="col-sm-4 col-form-label">Masukkan Email<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="email" class="form-control" id="email">
+                                    <input type="email" name="email" class="form-control" id="email" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="nomor_hp" class="col-sm-4 col-form-label">Nomor HP<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="nomor_hp" class="form-control" id="nomor_hp">
+                                    <input type="text" name="nomor_hp" class="form-control" id="nomor_hp" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="semester" class="col-sm-4 col-form-label">Semester Saat Ini<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                <select class="form-select" name="semester" id= "semester" onclick="generateipk()" required>
-                                    <option value="1" disabled selected>-- Pilih Semester--</option>
-                                    <!-- perulangan untuk pemilihan semester  -->
-                                    <?php
-                                    for ($i = 1; $i < 9; $i++) {
-                                    ?>
-                                        <option value="<?= $i; ?>"><?= $i; ?></option>
+                                    <select class="form-select" name="semester" id="semester" onclick="generateipk()" required>
+                                        <option value="" disabled selected>-- Pilih Semester--</option>
+                                        <!-- perulangan untuk pemilihan semester  -->
                                         <?php
-                                    }
-                                    ?>
-                                </select>
+                                        for ($i = 1; $i < 9; $i++) {
+                                        ?>
+                                            <option value="<?= $i; ?>"><?= $i; ?></option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="IPK" class="col-sm-4 col-form-label">IPK Terakhir<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="IPK" class="form-control" id="IPK">
+                                    <input type="text" name="IPK" class="form-control" id="IPK" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="beasiswa" class="form-label w-50">Pilihan Beasiswa<span class="text-danger">*</span></label>
-                                <select name="beasiswa" class="form-select" id="beasiswa" disabled=false>
-                                    <option selected>-- Pilih Beasiswa --</option>
-                                    <option value="akademik">Akademik</option>
-                                    <option value="non">Non Akademik</option>
-                                </select>
+                                <label for="beasiswa" class="col-sm-4 col-form-label">Pilihan Beasiswa<span class="text-danger">*</span></label>
+                                <div class="col-sm-8">
+                                    <select name="beasiswa" class="form-select" id="beasiswa">
+                                        <option selected>-- Pilih Beasiswa --</option>
+                                        <option value="akademik">Akademik</option>
+                                        <option value="non">Non Akademik</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="mb-3 row">
@@ -105,18 +106,19 @@ session_start();
                                 </div>
                             </div>
                             <div class="mt-4 mb-2 d-flex justify-content-end row">
-                                <button class="col-5 btn btn-info text-white" id="daftar" name="daftar" disabled='false'>Daftar</button>
-                                <a href="index.php" class="col-5 btn btn-outline-secondary offset-2" id="cancel" disabled='false'>Cancel</a>
+                                <button class="col-5 btn btn-info text-white" id="daftar" name="daftar" type="submit">Daftar</button>
+                                <a href="index.php" class="col-5 btn btn-outline-secondary offset-2" id="cancel">Cancel</a>
                             </div>
                         </form>
-                        <!-- Akhir form -->
                     </div>
+                    <!-- Akhir form -->
                 </div>
-
             </div>
+
         </div>
     </div>
-    <!-- script for generate ipk -->
+    </div>
+    <!-- script for generate ipk
     <script>
         // function untuk mengenerate ipk dengan button enable dan disable
         function generateipk() {
@@ -136,7 +138,7 @@ session_start();
                 document.getElementById('daftar').disabled = true;
             }
         }
-    </script>
+    </script> -->
 </body>
 
 </html>
