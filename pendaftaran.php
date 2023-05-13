@@ -90,10 +90,9 @@ session_start();
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="beasiswa" class="col-sm-4 col-form-label">Pilihan Beasiswa<span class="text-danger">*</span></label>
-                                <div class="col-sm-8">
+                                <label for="beasiswa" class="form-label w-50">Pilihan Beasiswa<span class="text-danger">*</span></label>
                                 <select name="beasiswa" class="form-select" id="beasiswa" disabled=false>
-                                    <option readonly selected>-- Pilih Beasiswa --</option>
+                                    <option selected>-- Pilih Beasiswa --</option>
                                     <option value="akademik">Akademik</option>
                                     <option value="non">Non Akademik</option>
                                 </select>
