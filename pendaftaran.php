@@ -44,60 +44,65 @@ session_start();
                         <!-- awal form -->
                         <form>
                             <div class="mb-3 row">
-                                <label for="inputName" class="col-sm-4 col-form-label">Masukkan Nama<span class="text-danger">*</span></label>
+                                <label for="nama" class="col-sm-4 col-form-label">Masukkan Nama<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputNama">
+                                    <input type="text" name="nama" class="form-control" id="nama">
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputNIM" class="col-sm-4 col-form-label">NIM<span class="text-danger">*</span></label>
+                                <label for="nim" class="col-sm-4 col-form-label">NIM<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputNIM">
+                                    <input type="text" name="nim" class="form-control" id="nim">
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputEmail" class="col-sm-4 col-form-label">Masukkan Email<span class="text-danger">*</span></label>
+                                <label for="email" class="col-sm-4 col-form-label">Masukkan Email<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputEmail">
+                                    <input type="text" name="email" class="form-control" id="email">
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputNomor" class="col-sm-4 col-form-label">Nomor HP<span class="text-danger">*</span></label>
+                                <label for="nomor_hp" class="col-sm-4 col-form-label">Nomor HP<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputNomor">
+                                    <input type="text" name="nomor_hp" class="form-control" id="nomor_hp">
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputSemester" class="col-sm-4 col-form-label">Semester Saat Ini<span class="text-danger">*</span></label>
+                                <label for="semester" class="col-sm-4 col-form-label">Semester Saat Ini<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <select class="form-select form-select-lg-sm" aria-label=".form-select-lg example">
-                                        <option value="1" disabled selected>-- Pilih Semester--</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                    </select>
+                                <select class="form-select" name="semester" id= "semester" onclick="generateipk()" required>
+                                    <option value="1" disabled selected>-- Pilih Semester--</option>
+                                    <!-- perulangan untuk pemilihan semester  -->
+                                    <?php
+                                    for ($i = 1; $i < 9; $i++) {
+                                    ?>
+                                        <option value="<?= $i; ?>"><?= $i; ?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputIPK" class="col-sm-4 col-form-label">IPK Terakhir<span class="text-danger">*</span></label>
+                                <label for="IPK" class="col-sm-4 col-form-label">IPK Terakhir<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputIPK">
+                                    <input type="text" name="IPK" class="form-control" id="IPK">
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputPilihan" class="col-sm-4 col-form-label">Pilihan Beasiswa<span class="text-danger">*</span></label>
+                                <label for="beasiswa" class="col-sm-4 col-form-label">Pilihan Beasiswa<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <select class="form-select form-select-lg-sm" aria-label=".form-select-lg example">
-                                        <option value="1" disabled selected>-- Pilih Beasiswa--</option>
-                                        <option value="1">Beasiswa Akademik</option>
-                                        <option value="2">Beasiswa Non-Akademik</option>
-                                    </select>
+                                <select name="beasiswa" class="form-select" id="beasiswa" disabled=false>
+                                    <option readonly selected>-- Pilih Beasiswa --</option>
+                                    <option value="akademik">Akademik</option>
+                                    <option value="non">Non Akademik</option>
+                                </select>
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputBerkas" class="col-sm-4 col-form-label">Upload Berkas<span class="text-danger">*</span></label>
+                                <label for="berkas" class="col-sm-4 col-form-label">Upload Berkas<span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input class="form-control" type="file" id="formFile">
+                                    <input class="form-control" name="berkas" type="file" id="berkas">
                                 </div>
                             </div>
                             <div class="mt-4 mb-2 d-flex justify-content-end row">
