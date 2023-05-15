@@ -35,7 +35,7 @@ if (isset($_POST['daftar'])) {
             // direktori upload file berkas
             move_uploaded_file($get_temp, 'assets/file/' . $berkasName);
             // koneksi ke database dan memasukkan ke tabel mahasiswa dan di convert ke lowercase 
-            $query = mysqli_query($conn, "INSERT INTO mahasiswa VALUES('$convertLowerCase','$nim','$email','$kota_asal','$nomor_hp','$semester','$IPK', '$beasiswa', '$berkasName', 'Belum di Verifikasi')");
+            $query = mysqli_query($conn, "INSERT INTO mahasiswa VALUES('$convertLowerCase','$nim','$email','$kota_asal','$nomor_hp','$semester','$IPK', '$beasiswa', '$berkasName', '$berkas', 'Belum di Verifikasi')");
             if ($query) {
                 // alert jika pendataran berhasil
                 $_SESSION['message'] = ["Pendaftaran Berhasil", 'sukses'];
