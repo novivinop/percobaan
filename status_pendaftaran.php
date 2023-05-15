@@ -1,6 +1,6 @@
 <?php
-session_start();
 
+include('config.php')
 ?>
 
 <!DOCTYPE html>
@@ -10,13 +10,15 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Hasil Pendaftaran</title>
+    <title>Pendaftaran Beasiswa</title>
+    <!-- import bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 
 <body>
-    <div class="Cointainer">
-        <!-- Halaman navbar -->
+    <!-- container navbar start -->
+    <div class="container pt-2">
+        <!-- navbar start -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -30,61 +32,87 @@ session_start();
                 </div>
             </div>
         </nav>
-        <!-- Hasil navbar -->
-        <div class="container d-flex justify-content-center">
+        <!-- navbar end -->
+    </div>
+    <!-- container navbar end -->
 
-            <div class="col-md-12 d-flex justify-content-center">
-                <div class="card mt-3" style="width: 100%;">
-                    <h3 class="text-center mb-5 mt-3">Status Pendaftaran Beasiswa Mahasiswa</h3>
-                    <div class="card-body">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Nama</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">No. Handphone</th>
-                                    <th scope="col">Semester</th>
-                                    <th scope="col">IPK</th>
-                                    <th scope="col">Beasiswa</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Berkas</th>
-                                    <th scope="col">Verifikasi</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Novi Rahmawati</td>
-                                    <td>nnodvii@gmaill</td>
-                                    <td>024234235253</td>
-                                    <td>7</td>
-                                    <td>4</td>
-                                    <td>Akademik</td>
-                                    <td>belum di verifikasi</td>
-                                    <td><button type="button" class="btn btn-success">Success</button></td>
-                                    <td><button type="button" class="btn btn-primary">Primary</button></td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Novi Rahmawati</td>
-                                    <td>nnodvii@gmaill</td>
-                                    <td>024234235253</td>
-                                    <td>7</td>
-                                    <td>4</td>
-                                    <td>Akademik</td>
-                                    <td>belum di verifikasi</td>
-                                    <td><button type="button" class="btn btn-success">Success</button></td>
-                                    <td><button type="button" class="btn btn-primary">Primary</button></td>
-                                </tr>
-
-                            </tbody>
-                        </table>
+    <!-- container status pendaftaran -->
+    <div class="container">
+        <!-- card start -->
+        <div class="card mt-5">
+            <!-- title status pendaftaran -->
+            <h4 class="text-center mt-4">Status Pendaftaran Beasiswa Mahasiswa</h4>
+            <div class="card-body">
+                <?php
+                // pengecekan untuk mencetak sesuai dengan status verifikasi
+                if (isset($_SESSION['result'])) {
+                    ?>
+                    <div class="alert alert-success" role="alert">
+                        <?= $_SESSION['result']; ?>
+                        <?php unset($_SESSION['result']); ?>
                     </div>
-                </div>
+                    <?php
+                }
+                ?>
+                <!-- table start -->
+                <table class="table table-responsive table-bordered">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>Kota Asal</th>
+                            <th>Nomor Handphone</th>
+                            <th>Semester</th>
+                            <th>IPK</th>
+                            <th>Beasiswa</th>
+                            <th>Status</th>
+                            <th>Berkas</th>
+                            <th>Verifikasi</th>
+                            <a href="" ></a>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        // mengkoneksi ke database dan mengambil data dari tabel mahasiswa
+                        $query = mysqli_query($conn, 'SELECT * FROM mahasiswa');
+                        $i = 1;
+                        $status = '';
+                        
+                        // $count = mysqli_num_rows($query);
+                        while ($user = mysqli_fetch_array($query)) {
+                            echo "<tr>";
+                            echo "<td>" . $i++ . "</td>";
+                            echo "<td>" . $user['nama'] . "</td>";
+                            echo "<td>" . $user['email'] . "</td>";
+                            echo "<td>" . $user['kota_asal'] . "</td>";
+                            echo "<td>" . $user['nomor_hp'] . " </td>";
+                            echo "<td>" . $user['semester'] . " </td>";
+                            echo "<td>" . $user['IPK'] . " </td>";
+                            echo "<td>" . $user['beasiswa'] . " </td>";
+                            echo "<td>". $user['status'] . "</td>";
+                            // buton untuk melihat dan download berkas
+                            echo "<td>" . "<a href='assets/file/$user[berkas]' class='btn btn-sm btn-primary' target='_blank'>Berkas</a>" . "</td>";
+                            // pengecekan untuk memanipulasi button
+                            if($user['status'] == "Verifikasi") {
+                                echo "<td>" . "<a href='verifikasi.php?id=$user[id]' class='btn btn-danger btn-sm'>Batalkan</a>"  . "</td>";
+                            } else {
+                                echo "<td>" . "<a href='verifikasi.php?id=$user[id]' class='btn btn-success btn-sm'>Verifikasi</a>"  . "</td>";
+                            }
+                            echo "</tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+                <!-- table end-->
             </div>
         </div>
+        <!-- card end -->
+    </div>
+
+    <!-- import js bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

@@ -16,6 +16,7 @@ session_start();
 
 <body>
     <div class="Cointainer">
+    <div class="container pt-2">
         <!-- Halaman navbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
@@ -35,40 +36,69 @@ session_start();
 
             <div class="col-md-12 d-flex justify-content-center">
                 <div class="card mt-3" style="width: 100%;">
-                    <h3 class="text-center mb-5 mt-3">Hasil</h3>
+                    <h3 class="text-center mb-5 mt-3">Hasil Beasiswa</h3>
                     <div class="card-body">
                         <table class="table table-bordered">
                             <tbody>
+                                <?php
+                                include('config.php');
+                                // koneksi ke database dan ambil data dari tabel mahasiswa dan diurutkan secara descending
+                                $query = mysqli_query($conn, "SELECT * FROM mahasiswa ORDER BY id DESC");
+                                $user = mysqli_fetch_assoc($query);
+                                ?>
+                                <!-- memasukkan data dari tabel mahasiswa ke setiap kolom nama, email dst -->
                                 <tr>
                                     <td style="width:20%">Nama</td>
-                                    <td>Novi Rahmawati</td>
+                                    <td><?= $user['nama'] ?></td>
+                                </tr>
+                                <tr>
+                                    <td style="width:20%">NIM</td>
+                                    <td><?= $user['nim'] ?></td>
                                 </tr>
                                 <tr>
                                     <td style="width:20%">Email</td>
-                                    <td>emailajaa@gmail.com</td>
+                                    <td><?= $user['email'] ?></td>
+                                </tr>
+                                <tr>
+                                    <td style="width:20%">Kota Asal</td>
+                                    <td><?= $user['kota_asal'] ?></td>
                                 </tr>
                                 <tr>
                                     <td style="width:20%">Nomor Handphone</td>
-                                    <td>0824832424</td>
+                                    <td><?= $user['nomor_hp'] ?></td>
                                 </tr>
                                 <tr>
                                     <td style="width:20%">Semester</td>
-                                    <td>8</td>
+                                    <td><?= $user['semester'] ?></td>
                                 </tr>
                                 <tr>
                                     <td style="width:20%">IPK</td>
-                                    <td>4</td>
+                                    <td><?= $user['IPK'] ?></td>
                                 </tr>
                                 <tr>
                                     <td style="width:20%">Beasiswa</td>
-                                    <td>Akademik</td>
+                                    <td><?= $user['beasiswa'] ?></td>
                                 </tr>
-                                <tr>
-                                    <td>Status</td>
-                                    <td class="badge bg-warning mt-2">belum diverifikasi
-                                    </td>
+                                <tr class="border">
+                                    <td style="width:20%">Status</td>
+                                    
+
+                                    <?php
+                                    // pengecekan untuk mencetak status verfikasi
+                                    if ($user['status'] == "Verifikasi") {
+                                        echo '
+                                        <td class="badge bg-success mt-2">
+                                        Verifikasi
+                                         </td>';
+                                    } else {
+                                        echo '
+                                        <td class="badge bg-warning mt-2">
+                                        Belum di Verifikasi
+                                        </td>';
+                                    }
+                                    ?>
                                 </tr>
-                               
+
                             </tbody>
                         </table>
                     </div>
