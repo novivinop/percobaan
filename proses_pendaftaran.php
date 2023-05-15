@@ -17,7 +17,7 @@ $convertLowerCase = strtolower($nama);
 
 if (isset($_POST['daftar'])) {
     // pengecekan untuk data tidak boleh kosong
-    if (empty($nama) || empty($nim) || empty($email) || empty($kota_asal) ||empty($nomor_hp) || empty($semester) || empty($IPK) || empty($beasiswa) || empty($berkas)) {
+    if (empty($nama) || empty($nim) || empty($email) || empty($kota_asal) || empty($nomor_hp) || empty($semester) || empty($IPK) || empty($beasiswa) || empty($berkas)) {
         $_SESSION['message'] = ['Data Tidak Boleh Kosong', 'error'];
         header('location:pendaftaran.php');
     } elseif ($berkas != '') {
@@ -35,7 +35,7 @@ if (isset($_POST['daftar'])) {
             // direktori upload file berkas
             move_uploaded_file($get_temp, 'assets/file/' . $berkasName);
             // koneksi ke database dan memasukkan ke tabel mahasiswa dan di convert ke lowercase 
-            $query = mysqli_query($conn, "INSERT INTO mahasiswa VALUES('$convertLowerCase','$nim','$nama','$nomor_hp','$kota_asal','$semester','$IPK', '$beasiswa', '$berkasName','$email', 'Belum di Verifikasi')");
+            $query = mysqli_query($conn, "INSERT INTO mahasiswa VALUES('$convertLowerCase','$nim','$email','$kota_asal','$nomor_hp','$semester','$IPK', '$beasiswa', '$berkasName', 'Belum di Verifikasi')");
             if ($query) {
                 // alert jika pendataran berhasil
                 $_SESSION['message'] = ["Pendaftaran Berhasil", 'sukses'];

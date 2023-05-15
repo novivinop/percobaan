@@ -57,7 +57,7 @@ session_start();
                                 </div>
                             </div>
                                 <div class="mb-3 row">
-                                    <label for="nama" class="col-sm-4 col-form-label">Masukkan Email<span class="text-danger">*</span></label>
+                                    <label for="email" class="col-sm-4 col-form-label">Masukkan Email<span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                     <input type="email" name="email" id="email" min="0" class="form-control" autocomplete="off" required>
                                     </div>

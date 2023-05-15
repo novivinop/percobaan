@@ -46,12 +46,12 @@ include('config.php')
                 <?php
                 // pengecekan untuk mencetak sesuai dengan status verifikasi
                 if (isset($_SESSION['result'])) {
-                    ?>
+                ?>
                     <div class="alert alert-success" role="alert">
                         <?= $_SESSION['result']; ?>
                         <?php unset($_SESSION['result']); ?>
                     </div>
-                    <?php
+                <?php
                 }
                 ?>
                 <!-- table start -->
@@ -69,7 +69,7 @@ include('config.php')
                             <th>Status</th>
                             <th>Berkas</th>
                             <th>Verifikasi</th>
-                            <a href="" ></a>
+                            <a href=""></a>
                         </tr>
                     </thead>
                     <tbody>
@@ -78,7 +78,7 @@ include('config.php')
                         $query = mysqli_query($conn, 'SELECT * FROM mahasiswa');
                         $i = 1;
                         $status = '';
-                        
+
                         // $count = mysqli_num_rows($query);
                         while ($user = mysqli_fetch_array($query)) {
                             echo "<tr>";
@@ -90,11 +90,11 @@ include('config.php')
                             echo "<td>" . $user['semester'] . " </td>";
                             echo "<td>" . $user['IPK'] . " </td>";
                             echo "<td>" . $user['beasiswa'] . " </td>";
-                            echo "<td>". $user['status'] . "</td>";
+                            echo "<td>" . $user['status'] . "</td>";
                             // buton untuk melihat dan download berkas
                             echo "<td>" . "<a href='assets/file/$user[berkas]' class='btn btn-sm btn-primary' target='_blank'>Berkas</a>" . "</td>";
                             // pengecekan untuk memanipulasi button
-                            if($user['status'] == "Verifikasi") {
+                            if ($user['status'] == "Verifikasi") {
                                 echo "<td>" . "<a href='verifikasi.php?id=$user[id]' class='btn btn-danger btn-sm'>Batalkan</a>"  . "</td>";
                             } else {
                                 echo "<td>" . "<a href='verifikasi.php?id=$user[id]' class='btn btn-success btn-sm'>Verifikasi</a>"  . "</td>";
